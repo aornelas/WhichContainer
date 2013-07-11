@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Which Container?</string>
+    <string name="which_pan">which pan?</string>
+    <string name="title_activity_selection">SelectionActivity</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
