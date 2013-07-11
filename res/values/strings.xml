@@ -3,7 +3,9 @@
 
     <string name="app_name">Which Container?</string>
     <string name="which_pan">which pan?</string>
+    <string name="how_much">how much?</string>
     <string name="title_activity_selection">SelectionActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_estimation">EstimationActivity</string>
 
 </resources>
