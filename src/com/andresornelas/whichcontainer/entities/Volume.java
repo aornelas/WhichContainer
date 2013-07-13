@@ -3,7 +3,7 @@ package com.andresornelas.whichcontainer.entities;
 public class Volume {
 
   private double amount;
-  private Unit   unit;
+  private Unit unit;
 
   public Volume(double amount, Unit unit) {
     this.amount = amount;
@@ -13,6 +13,14 @@ public class Volume {
   @Override
   public String toString() {
     return amount + " " + unit;
+  }
+
+  public double getAmount() {
+    return amount;
+  }
+
+  public Unit getUnit() {
+    return unit;
   }
 
 }

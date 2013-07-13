@@ -1,5 +1,5 @@
 package com.andresornelas.whichcontainer.entities;
 
 public enum Unit {
-  QT, OZ, IN
+  QT, OZ, IN, CUP
 }
