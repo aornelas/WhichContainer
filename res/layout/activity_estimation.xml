@@ -17,7 +17,6 @@
         android:id="@+id/selected_pan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="8 qt Cuisinart"
         style="@style/selected_pan" />
 
 </LinearLayout>

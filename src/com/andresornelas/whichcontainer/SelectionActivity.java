@@ -3,14 +3,18 @@ package com.andresornelas.whichcontainer;
 import android.app.ListActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import com.andresornelas.whichcontainer.entities.Volume;
 
 public class SelectionActivity extends ListActivity implements LoaderCallbacks<Cursor> {
   private static final String LOG_TAG = "WCSelectionActivity";
@@ -41,9 +45,9 @@ public class SelectionActivity extends ListActivity implements LoaderCallbacks<C
     adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
       @Override
       public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-        String capacity = cursor.getDouble(cursor.getColumnIndex(WCContract.Pans.Columns.CAPACITY))
-                + "";
-        if (capacity.endsWith(".0")) capacity = capacity.substring(0, capacity.length() - 2);
+        String capacity = Volume.cleanAmount(cursor.getDouble(cursor
+                .getColumnIndex(WCContract.Pans.Columns.CAPACITY))
+                + "");
         String unit = cursor.getString(cursor.getColumnIndex(WCContract.Pans.Columns.UNIT));
         String brand = cursor.getString(cursor.getColumnIndex(WCContract.Pans.Columns.BRAND));
         ((TextView) view).setText(capacity + " " + unit + " " + brand);
@@ -57,10 +61,16 @@ public class SelectionActivity extends ListActivity implements LoaderCallbacks<C
   }
 
   @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.selection, menu);
-    return true;
+  protected void onListItemClick(ListView l, View v, int p, long id) {
+    Cursor c = (Cursor) l.getItemAtPosition(p);
+    Intent i = new Intent(this, EstimationActivity.class);
+    i.putExtra(WCContract.Pans.Columns.CAPACITY,
+            c.getDouble(c.getColumnIndex(WCContract.Pans.Columns.CAPACITY)));
+    i.putExtra(WCContract.Pans.Columns.UNIT,
+            c.getString(c.getColumnIndex(WCContract.Pans.Columns.UNIT)));
+    i.putExtra(WCContract.Pans.Columns.BRAND,
+            c.getString(c.getColumnIndex(WCContract.Pans.Columns.BRAND)));
+    startActivity(i);
   }
 
   @Override
@@ -78,6 +88,13 @@ public class SelectionActivity extends ListActivity implements LoaderCallbacks<C
   @Override
   public void onLoaderReset(Loader<Cursor> loader) {
     ((SimpleCursorAdapter) getListAdapter()).swapCursor(null);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.selection, menu);
+    return true;
   }
 
 }

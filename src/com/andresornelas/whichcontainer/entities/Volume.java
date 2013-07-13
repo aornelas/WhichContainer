@@ -23,4 +23,9 @@ public class Volume {
     return unit;
   }
 
+  public static String cleanAmount(String amount) {
+    if (amount.endsWith(".0")) amount = amount.substring(0, amount.length() - 2);
+    return amount;
+  }
+
 }
