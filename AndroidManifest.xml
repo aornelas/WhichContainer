@@ -9,7 +9,7 @@
         android:targetSdkVersion="17" />
 
     <application
-        android:name=".WhichContainerApp"
+        android:name="com.andresornelas.whichcontainer.WhichContainerApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -25,18 +25,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
         <activity
             android:name="com.andresornelas.whichcontainer.EstimationActivity"
-            android:label="@string/title_activity_estimation" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
         </activity>
-        
-        <service android:name=".svc.WCService" />
-        
+
+        <activity
+            android:name="com.andresornelas.whichcontainer.ResultsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service android:name="com.andresornelas.whichcontainer.svc.WCService" />
+
         <provider
-            android:name=".data.WCProvider"
+            android:name="com.andresornelas.whichcontainer.data.WCProvider"
             android:authorities="com.andresornelas.whichcontainer"
-            android:exported="false"/>
+            android:exported="false" />
+        
     </application>
 
 </manifest>
