@@ -66,7 +66,7 @@ public class SelectionActivity extends ListActivity implements LoaderCallbacks<C
   @Override
   public Loader<Cursor> onCreateLoader(int id, Bundle args) {
     Log.d(LOG_TAG, "onCreateLoader");
-    return new CursorLoader(this, WCContract.Pans.URI, PROJECTION, null, null, null);
+    return new CursorLoader(this, WCContract.Pans.URI, PROJECTION, "IS_CONTAINER = 0", null, null);
   }
 
   @Override
