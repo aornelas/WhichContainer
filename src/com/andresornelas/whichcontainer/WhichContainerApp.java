@@ -15,7 +15,7 @@ import com.andresornelas.whichcontainer.entities.Volume;
 import com.andresornelas.whichcontainer.svc.WCService;
 
 public class WhichContainerApp extends Application {
-  private static final String LOG_TAG = WhichContainerApp.class.getSimpleName();
+  private static final String LOG_TAG = "WCApp";
 
   private static final Pan[] availablePans = new Pan[] {
       new Pan(new Volume(8, QT), CUISINART, false),
