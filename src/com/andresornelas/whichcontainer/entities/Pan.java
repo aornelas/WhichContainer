@@ -32,4 +32,9 @@ public class Pan {
   public boolean isContainer() {
     return this.isContainer;
   }
+
+  public int percentFull(int milliliters) {
+    int percent = milliliters * 100 / volume.getCapacity();
+    return percent > 100 ? percent * -1 : percent;
+  }
 }

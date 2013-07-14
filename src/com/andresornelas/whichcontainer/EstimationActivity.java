@@ -10,10 +10,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.andresornelas.whichcontainer.entities.Volume;
+import com.andresornelas.whichcontainer.svc.WCService;
 
 public class EstimationActivity extends Activity {
-
-  public static final String ESTIMATE = "EstimationActivity.Estimate";
 
   private TextView estimateLabel;
   private SeekBar estimateBar;
@@ -55,15 +54,18 @@ public class EstimationActivity extends Activity {
         showResults();
       }
     });
+
+    updateEstimateLabel(estimateBar.getProgress());
   }
 
   protected void showResults() {
     Bundle state = getIntent().getExtras();
-    Intent i = new Intent(this, ResultsActivity.class);
+    Intent i = new Intent(this, WCService.class);
+    i.putExtra(WCService.PARAM_OP, WCService.OP_FIND_CONTAINER);
     i.putExtra(WCContract.Pans.Columns.CAPACITY, state.getDouble(WCContract.Pans.Columns.CAPACITY));
-    i.putExtra(WCContract.Pans.Columns.UNIT, state.getDouble(WCContract.Pans.Columns.UNIT));
-    i.putExtra(ESTIMATE, estimateBar.getProgress());
-    startActivity(i);
+    i.putExtra(WCContract.Pans.Columns.UNIT, state.getString(WCContract.Pans.Columns.UNIT));
+    i.putExtra(WCService.PARAM_ESTIMATE, estimateBar.getProgress());
+    startService(i);
   }
 
   protected void updateEstimateLabel(int value) {

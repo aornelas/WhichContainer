@@ -21,7 +21,9 @@ public class WhichContainerApp extends Application {
       new Pan(new Volume(8, QT), CUISINART, false),
       new Pan(new Volume(12, QT), LE_CREUSET, false),
       new Pan(new Volume(10, IN), CUISINART, false),
-      new Pan(new Volume(4, CUP), PYREX, true)
+      new Pan(new Volume(10, CUP), CUISINART, false),
+      new Pan(new Volume(4, CUP), PYREX, true),
+      new Pan(new Volume(10, CUP), PYREX, true)
   };
 
   @Override
