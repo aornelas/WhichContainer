@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.andresornelas.whichcontainer.entities.Volume;
+import com.andresornelas.whichcontainer.svc.WCService;
 
 public class ResultsActivity extends Activity {
 
@@ -20,11 +21,13 @@ public class ResultsActivity extends Activity {
     if (state == null) state = getIntent().getExtras();
 
     if (state != null) {
-      TextView bestContainer = (TextView) findViewById(R.id.best_container);
+      TextView bestContainer = (TextView) findViewById(R.id.best_container_label);
       bestContainer.setText(Volume.cleanAmount(
               state.getDouble(WCContract.Pans.Columns.CAPACITY) + "") + " " +
               state.getString(WCContract.Pans.Columns.UNIT) + " " +
               state.getString(WCContract.Pans.Columns.BRAND));
+      TextView percentFull = (TextView) findViewById(R.id.percentage_full_label);
+      percentFull.setText(state.getInt(WCService.PARAM_PERCENT_FULL) + "% full");
     }
 
     Button resetButton = (Button) findViewById(R.id.reset_button);

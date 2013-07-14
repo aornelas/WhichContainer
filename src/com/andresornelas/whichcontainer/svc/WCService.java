@@ -19,6 +19,7 @@ public class WCService extends IntentService {
 
   public static final String PARAM_OP = "WhichContainter.OP";
   public static final String PARAM_ESTIMATE = "WhichContainer.ESTIMATE";
+  public static final String PARAM_PERCENT_FULL = "WhichContainer.PERCENT_FULL";
 
   public static final int OP_ADD_PAN = -1;
   public static final int OP_FIND_CONTAINER = -2;
@@ -62,16 +63,19 @@ public class WCService extends IntentService {
 
       double amount = i.getDoubleExtra(WCContract.Pans.Columns.CAPACITY, 0);
       Unit unit = Unit.valueOf(i.getStringExtra(WCContract.Pans.Columns.UNIT).toUpperCase());
-      int percentFull = i.getIntExtra(PARAM_ESTIMATE, 0);
 
-      int estimatedMLs = new Volume(amount, unit).getEstimation(percentFull);
+      int estimatedMLs = new Volume(amount, unit).getEstimation(i.getIntExtra(PARAM_ESTIMATE, 0));
       cursor.moveToFirst();
       Pan bestContainer = getPan(cursor);
+      int bestPercent = bestContainer.percentFull(estimatedMLs);
       do {
         cursor.moveToNext();
         Pan currentContainer = getPan(cursor);
-        if (currentContainer.percentFull(estimatedMLs) > bestContainer.percentFull(estimatedMLs)) {
+        int currentPercent = currentContainer.percentFull(estimatedMLs);
+        if (currentPercent > bestPercent) {
           bestContainer = currentContainer;
+          bestPercent = currentPercent;
+
         }
       } while (!cursor.isLast());
 
@@ -81,6 +85,7 @@ public class WCService extends IntentService {
       i.putExtra(WCContract.Pans.Columns.CAPACITY, bestContainer.getCapacity());
       i.putExtra(WCContract.Pans.Columns.UNIT, bestContainer.getUnit().toString());
       i.putExtra(WCContract.Pans.Columns.BRAND, bestContainer.getBrand().toString());
+      i.putExtra(PARAM_PERCENT_FULL, bestPercent);
       startActivity(i);
     } finally {
       if (cursor != null) cursor.close();

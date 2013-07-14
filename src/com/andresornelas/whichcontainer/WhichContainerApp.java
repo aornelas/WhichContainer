@@ -2,7 +2,10 @@ package com.andresornelas.whichcontainer;
 
 import static com.andresornelas.whichcontainer.entities.Brand.CUISINART;
 import static com.andresornelas.whichcontainer.entities.Brand.LE_CREUSET;
+import static com.andresornelas.whichcontainer.entities.Brand.MULLINIX;
 import static com.andresornelas.whichcontainer.entities.Brand.PYREX;
+import static com.andresornelas.whichcontainer.entities.Brand.REYNOLDS;
+import static com.andresornelas.whichcontainer.entities.Brand.RUBBERMAID;
 import static com.andresornelas.whichcontainer.entities.Unit.CUP;
 import static com.andresornelas.whichcontainer.entities.Unit.IN;
 import static com.andresornelas.whichcontainer.entities.Unit.QT;
@@ -18,12 +21,25 @@ public class WhichContainerApp extends Application {
   private static final String LOG_TAG = "WCApp";
 
   private static final Pan[] availablePans = new Pan[] {
-      new Pan(new Volume(8, QT), CUISINART, false),
-      new Pan(new Volume(12, QT), LE_CREUSET, false),
+      new Pan(new Volume(10, IN), LE_CREUSET, false),
+      new Pan(new Volume(1.5, QT), LE_CREUSET, false),
+      new Pan(new Volume(3.5, QT), LE_CREUSET, false),
       new Pan(new Volume(10, IN), CUISINART, false),
-      new Pan(new Volume(10, CUP), CUISINART, false),
-      new Pan(new Volume(4, CUP), PYREX, true),
-      new Pan(new Volume(10, CUP), PYREX, true)
+      new Pan(new Volume(1.5, QT), CUISINART, false),
+      new Pan(new Volume(3, QT), CUISINART, false),
+      new Pan(new Volume(1.5, QT), CUISINART, false),
+      new Pan(new Volume(3.5, QT), CUISINART, false),
+
+      // Containers
+      new Pan(new Volume(3, CUP), MULLINIX, true),
+      new Pan(new Volume(3, CUP), REYNOLDS, true),
+      new Pan(new Volume(1, QT), PYREX, true),
+      new Pan(new Volume(1.5, QT), PYREX, true),
+      new Pan(new Volume(2.5, QT), PYREX, true),
+      new Pan(new Volume(6, CUP), PYREX, true),
+      new Pan(new Volume(1.25, CUP), RUBBERMAID, true),
+      new Pan(new Volume(2, CUP), RUBBERMAID, true),
+      new Pan(new Volume(5, CUP), RUBBERMAID, true),
   };
 
   @Override

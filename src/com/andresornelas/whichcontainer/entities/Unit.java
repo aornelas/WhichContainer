@@ -3,7 +3,11 @@ package com.andresornelas.whichcontainer.entities;
 import android.annotation.SuppressLint;
 
 public enum Unit {
-  QT(946), OZ(30), IN(100), CUP(250), ML(1);
+  CUP(250),
+  IN(100),
+  ML(1),
+  OZ(30),
+  QT(946);
 
   private int inML;
 
