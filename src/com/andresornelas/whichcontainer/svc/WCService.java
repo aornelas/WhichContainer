@@ -56,7 +56,7 @@ public class WCService extends IntentService {
       }, "IS_CONTAINER = 1 AND AMOUNT > 0", null, null);
 
       if (cursor.getCount() == 0) {
-        // TODO: Show Toast that no containers are available and open SelectionActivity
+        // TODO: Show Toast that no containers are available and open SelectionActivity.
         return;
       }
 
