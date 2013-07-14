@@ -15,17 +15,14 @@
 
     <TextView
         android:id="@+id/best_container_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        style="@style/selected_pan" />
     
     <TextView
         android:id="@+id/percentage_full_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/reset_button"

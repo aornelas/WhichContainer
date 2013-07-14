@@ -27,7 +27,6 @@ public class WhichContainerApp extends Application {
       new Pan(new Volume(10, IN), CUISINART, false),
       new Pan(new Volume(1.5, QT), CUISINART, false),
       new Pan(new Volume(3, QT), CUISINART, false),
-      new Pan(new Volume(1.5, QT), CUISINART, false),
       new Pan(new Volume(3.5, QT), CUISINART, false),
 
       // Containers

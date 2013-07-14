@@ -40,7 +40,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/title_pen</item>
-        <item name="android:textSize">50sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textStyle">bold</item>
     </style>
     
@@ -49,6 +49,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/pan_pen</item>
-        <item name="android:textSize">35sp</item>
+        <item name="android:textSize">25sp</item>
     </style>
 </resources>
